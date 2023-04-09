@@ -18,4 +18,9 @@
         from base_info
         where base_id = #{baseId}
     </select>
+
+    <insert id="saveToPg">
+        INSERT INTO base_info(base_id, base_code)
+        VALUES (#{baseId}, #{baseCode})
+    </insert>
 </mapper>

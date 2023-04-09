@@ -1,6 +1,7 @@
 package cn.charlie.dynamicdatasource.service;
 
 import cn.charlie.dynamicdatasource.entity.BaseInfo;
+import cn.charlie.dynamicdatasource.entity.BaseInfoParam;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,17 @@ public class BaseServiceTest {
         BaseInfo baseInfo = baseInfoList.get(0);
         String baseCode = "3";
         Assertions.assertEquals(baseInfo.getBaseCode(), baseCode);
+    }
+
+    @Test
+    public void testSaveToPg() throws Exception {
+        Long id = 1089284975455461312L;
+        String code = "6";
+        BaseInfoParam baseInfoParam = new BaseInfoParam();
+        baseInfoParam.setBaseId(id);
+        baseInfoParam.setBaseCode(code);
+        BaseInfo baseInfo = baseService.saveToPg(baseInfoParam);
+        Assertions.assertEquals(baseInfo.getBaseId(), id);
+        Assertions.assertEquals(baseInfo.getBaseCode(), code);
     }
 }
